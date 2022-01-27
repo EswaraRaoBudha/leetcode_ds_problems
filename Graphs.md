@@ -912,18 +912,6 @@ def island_perimeter(grid):
 island_perimeter([[0,1,0,0],[1,1,1,0],[0,1,0,0],[1,1,0,0]])
 ```
 
-    3 1 (0, 1)
-    3 1 (1, 0)
-    0 4 (1, 1)
-    3 1 (1, 2)
-    2 2 (2, 1)
-    3 1 (3, 0)
-    2 2 (3, 1)
-
-
-
-
-
     16
 
 
@@ -932,3 +920,46 @@ island_perimeter([[0,1,0,0],[1,1,1,0],[0,1,0,0],[1,1,0,0]])
 ```python
 
 ```
+
+#### 694. Number of Distinct Islands
+
+    You are given an m x n binary matrix grid. An island is a group of 1's (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.
+    An island is considered to be the same as another if and only if one island can be translated (and not rotated or reflected) to equal the other.
+    Return the number of distinct islands.
+ ```python
+ def find_unique_islands(grid):
+    def island_traversal(row,col):
+        is_row_outbound=(row<0 or row>=rows)
+        is_col_outbound=(col<0 or col>=columns)
+        is_visted=(row,col) in visted_nodes
+        if is_row_outbound or is_col_outbound or is_visted or grid[row][col]==0:
+            return
+        visted_nodes[(row,col)]=True
+        local_islands.append((row-row_origon,col-col_origon))
+        island_traversal(row-1,col)
+        island_traversal(row+1,col)
+        island_traversal(row,col-1)
+        island_traversal(row,col+1)
+    
+    rows,columns=len(grid),len(grid[0])
+    visted_nodes={}
+    hash_ilands={}
+    for row_origon in range(rows):
+        for col_origon in range(columns):
+            if (row_origon,col_origon) in visted_nodes or grid[row_origon][col_origon]==0:
+                continue
+            local_islands=[]
+            island_traversal(row_origon,col_origon)
+            hash_ilands[hash(str(local_islands))]=True
+    return len(hash_ilands)
+    
+```
+
+```python
+    grid = [[1,1,0,0,0],[1,1,0,0,0],[0,0,0,1,1],[0,0,0,1,1]]
+    find_unique_islands(grid)
+```    
+    
+    1
+    
+    
