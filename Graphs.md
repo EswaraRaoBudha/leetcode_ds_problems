@@ -1,4 +1,5 @@
-### Graph Traversal DFS & BFS with AdjcentList
+# Graph Problems
+### Graph Traversal using DFS & BFS
 
 
 ```python
@@ -12,7 +13,7 @@ graph={
 }
 ```
 
-- DFS
+- DFS Traversal with Using stack
 
 
 ```python
@@ -41,8 +42,7 @@ graph_traversal(graph)
 
 
 
-- BFS
-
+- BFS Traversal using queue 
 
 ```python
 from queue import deque
@@ -70,7 +70,7 @@ bfs_traversal(graph)
 
 
 
-- handeling CyclicGraph
+- Working with cyclic graph
 
 
 ```python
@@ -112,6 +112,16 @@ is_cyclic_graph(graph1)
 
 
 
+```python
+graph={
+    'a':['b','c'],
+    'b':['d'],
+    'c':['e'],
+    'd':['f'],
+    'e':[],
+    'f':[]
+}
+```
 
 ```python
 is_cyclic_graph(graph)
@@ -123,7 +133,7 @@ is_cyclic_graph(graph)
     False
 
 
-
+- traversal cyclic graph
 
 ```python
 def traversal_cyclic_graph(graph):
@@ -151,7 +161,8 @@ traversal_cyclic_graph(graph1)
 
 
 
-- HashPath
+- HashPath from one node to another node
+    - using stacks
 
 
 ```python
@@ -203,8 +214,8 @@ is_travel_possible(graph,'i','f')
     False
 
 
-
-- with Recurssion
+- HashPath from one node to another node
+    - Using recursion   
 
 
 ```python
@@ -248,7 +259,7 @@ is_travel_possible(graph,'f','k')
     False
 
 
-
+- build adjacent list when given edges as input for graph problem 
 
 ```python
 edges = [
@@ -259,7 +270,6 @@ edges = [
   ['o', 'n']
 ];
 
-#undirectedPath(edges, 'j', 'm'); // -> true
 ```
 
 
@@ -297,7 +307,7 @@ buildAdjcentList(edges)
      'n': ['o']}
 
 
-
+- undirected graph traversal using edges of pairs
 
 ```python
 def undir_graph_traversal(graph,source,target):
@@ -342,7 +352,7 @@ undir_graph_traversal(adj_graph,'k', 'o')
 
 
 
-### connected components count
+#### connected components count
     Write a function, connectedComponentsCount, that takes in the adjacency list of an undirected graph. The function should return the number of connected components within the graph.
     
          connectedComponentsCount({
@@ -355,7 +365,7 @@ undir_graph_traversal(adj_graph,'k', 'o')
           4: [3, 2]
         }); // -> 2
 
-
+- using stack
 ```python
 def connected_components(graph):
     def graph_traversal(node):
@@ -420,7 +430,7 @@ connected_components(graph)
 
 
 
-
+- using recurssion 
 ```python
 def connected_components(graph):
     def graph_traversal(node):
@@ -460,7 +470,8 @@ connected_components(graph)
 
 
 
-
+#### find largest connected components count
+- using stack
 ```python
 def largest_component1(graph):
     def graph_traversal(node):
@@ -507,7 +518,7 @@ largest_component1(graph)
     5
 
 
-
+- using recursion 
 
 ```python
 def largest_component(graph):
@@ -577,7 +588,8 @@ largest_component(graph)
 
     shortest_path(edges, 'w', 'z') # -> 2
 
-
+- using queue
+- 
 ```python
 from queue import deque
 def buil_adjcent_list(edges):
@@ -685,6 +697,7 @@ grid = [
 ]
 ```
 
+- using recursion 
 
 ```python
 def find_number_of_islands(grid):
@@ -721,7 +734,7 @@ find_number_of_islands(grid)
 
 
 
-- stack
+- using stack
 
 
 ```python
